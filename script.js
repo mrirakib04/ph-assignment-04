@@ -108,3 +108,34 @@ console.log(isSame([2, 5, 6], 256));
 console.log(isSame({ data: [2, 5, 6] }, [2, 5, 6]));
 
 console.log("------------------------------");
+
+// result maker
+function resultReport(marks) {
+  // You have to write your code here
+  if (Array.isArray(marks)) {
+    let totalMark = 0;
+    let pass = 0;
+    let fail = 0;
+    marks.forEach((mark) => {
+      totalMark += mark;
+      if (mark >= 40) {
+        pass += 1;
+      } else {
+        fail += 1;
+      }
+    });
+    return {
+      finalScore: Math.round(marks.length > 0 ? totalMark / marks.length : 0),
+      pass: pass,
+      fail: fail,
+    };
+  } else {
+    return "Invalid";
+  }
+}
+
+console.log(resultReport([]));
+console.log(resultReport([98, 87, 67, 91, 92, 33, 87]));
+console.log(resultReport([99, 87, 67, 12, 87]));
+console.log(resultReport([99]));
+console.log(resultReport(100));
